@@ -4,8 +4,11 @@ logs
 yarn-debug.log*
 yarn-error.log*
 
-# Build directory
-built/
+# Server build directory
+/build/
+
+# Client build directory
+/public/bundle/
 
 # Dependency directories
 node_modules/
