@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { NoID } from '@types';
+import { NoID } from 'types';
 
 export class BaseDao<Interface, IReturnInterface = Interface> {
   constructor(protected model: mongoose.Model<Interface>) {}

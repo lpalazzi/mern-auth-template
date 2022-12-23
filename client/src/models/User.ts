@@ -1,4 +1,4 @@
-import { ID } from '@types';
+import { ID } from 'types';
 
 interface UserParams {
   _id: ID;
@@ -18,5 +18,9 @@ export class User {
     this._id = params._id;
     this.email = params.email;
     this.name = params.name;
+  }
+
+  public getFullName() {
+    return this.name.first + ' ' + this.name.last;
   }
 }

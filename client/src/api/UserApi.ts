@@ -1,5 +1,5 @@
-import { User } from '@models';
-import { ID } from '@types';
+import { User } from 'models';
+import { ID } from 'types';
 import {
   IUserLoginDTO,
   IUserReturnDTO,
@@ -11,39 +11,35 @@ export class UserApi {
   private static baseUrl = '/user';
 
   static async getActiveUser() {
-    const userReturn: IUserReturnDTO = await makeRequest(
-      `${this.baseUrl}/getActiveUser`
-    );
-    return new User(userReturn);
+    const response = await makeRequest(`${this.baseUrl}/getActiveUser`);
+    const userReturn: IUserReturnDTO = response.user;
+    return userReturn ? new User(userReturn) : null;
   }
 
   static async getById(id: ID) {
-    const userReturn: IUserReturnDTO = await makeRequest(
-      `${this.baseUrl}/${id}`
-    );
+    const response = await makeRequest(`${this.baseUrl}/${id}`);
+    const userReturn: IUserReturnDTO = response.user;
     return new User(userReturn);
   }
 
   static async signup(userSignup: IUserSignupDTO) {
-    const userReturn: IUserReturnDTO = await makeRequest(
-      `${this.baseUrl}/signup`,
-      'POST',
-      { userSignup }
-    );
+    const response = await makeRequest(`${this.baseUrl}/signup`, 'POST', {
+      userSignup,
+    });
+    const userReturn: IUserReturnDTO = response.user;
     return new User(userReturn);
   }
 
   static async login(userLogin: IUserLoginDTO) {
-    const userReturn: IUserReturnDTO = await makeRequest(
-      `${this.baseUrl}/login`,
-      'POST',
-      { userLogin }
-    );
+    const response = await makeRequest(`${this.baseUrl}/login`, 'POST', {
+      userLogin,
+    });
+    const userReturn: IUserReturnDTO = response.user;
     return new User(userReturn);
   }
 
   static async logout() {
-    await makeRequest(`${this.baseUrl}/logout`);
-    return true;
+    const response = await makeRequest(`${this.baseUrl}/logout`, 'POST');
+    return !!response.success;
   }
 }

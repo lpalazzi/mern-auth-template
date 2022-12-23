@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { MantineProvider } from '@mantine/core';
+import { ModalsProvider } from '@mantine/modals';
+import { NotificationsProvider } from '@mantine/notifications';
+import { GlobalContextProvider } from 'contexts/globalContext';
+
+import { LoginPage } from 'views/LoginPage/LoginPage';
 
 function App() {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>
-          Edit <code>src/App.tsx</code> and saves to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GlobalContextProvider>
+      <MantineProvider withGlobalStyles withNormalizeCSS>
+        <NotificationsProvider>
+          <ModalsProvider>
+            <LoginPage />
+          </ModalsProvider>
+        </NotificationsProvider>
+      </MantineProvider>
+    </GlobalContextProvider>
   );
 }
 

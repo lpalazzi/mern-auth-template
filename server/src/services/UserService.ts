@@ -2,8 +2,8 @@ import mongoose from 'mongoose';
 import argon2 from 'argon2';
 import joi from 'joi';
 import { injectable } from 'tsyringe';
-import { UserDao } from '@daos';
-import { IUserLoginDTO, IUserReturnDTO, IUserSignupDTO } from '@interfaces';
+import { UserDao } from 'daos';
+import { IUserLoginDTO, IUserReturnDTO, IUserSignupDTO } from 'interfaces';
 
 @injectable()
 export class UserService {
@@ -65,8 +65,8 @@ export class UserService {
     try {
       const { error } = joi
         .object({
-          email: joi.string().email().required(),
-          password: joi.string().min(8).max(64).required(),
+          email: joi.string().required(),
+          password: joi.string().required(),
         })
         .required()
         .validate(userLogin);

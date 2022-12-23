@@ -7,17 +7,7 @@
     "module": "commonjs",
     "rootDir": "src",
     "outDir": "../build",
-    "baseUrl": "./src",
-    "paths": {
-      "@root": ["."],
-      "@types": ["types"],
-      "@interfaces": ["interfaces"],
-      "@models": ["models"],
-      "@services": ["services"],
-      "@config": ["config"],
-      "@daos": ["daos"],
-      "@errors": ["api/errors"]
-    }
+    "baseUrl": "./src"
   },
   "ts-node": {
     "require": ["tsconfig-paths/register"]

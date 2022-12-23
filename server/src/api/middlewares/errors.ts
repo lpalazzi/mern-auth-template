@@ -1,4 +1,4 @@
-import config from '@config';
+import config from 'config';
 import express from 'express';
 
 export const errorResponder: express.ErrorRequestHandler = async (

@@ -1,7 +1,6 @@
 import express from 'express';
 import 'reflect-metadata';
-import 'module-alias/register';
-import config from '@config';
+import config from 'config';
 import * as loaders from './loaders';
 
 async function start() {

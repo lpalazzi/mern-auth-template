@@ -1,3 +1,5 @@
+import { INetworkError } from './interfaces/NetworkError';
+
 export const makeRequest = async (
   url: string,
   method: 'GET' | 'POST' | 'PUT' | 'DELETE' = 'GET',
@@ -16,9 +18,10 @@ export const makeRequest = async (
     .then((res) => res.json());
 };
 
-const handleError = (res: Response) => {
+const handleError = async (res: Response) => {
   if (!res.ok) {
-    throw Error(res.statusText);
+    const error: INetworkError = await res.json();
+    throw Error(error.message);
   }
   return res;
 };

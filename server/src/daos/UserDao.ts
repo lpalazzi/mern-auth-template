@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { injectable } from 'tsyringe';
-import { IUser, IUserReturnDTO } from '@interfaces';
-import { UserModel } from '@models';
+import { IUser, IUserReturnDTO } from 'interfaces';
+import { UserModel } from 'models';
 import { BaseDao } from './BaseDao';
 
 @injectable()

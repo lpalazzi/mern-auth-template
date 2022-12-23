@@ -1,14 +1,13 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import { container } from 'tsyringe';
-import { UserService } from '@services';
+import { UserService } from 'services';
 import {
   ModelNotFoundError,
   BadRequestError,
   InternalServerError,
-  UnauthorizedError,
-} from '@errors';
-import { IUserLoginDTO, IUserSignupDTO } from '@interfaces';
+} from 'api/errors';
+import { IUserLoginDTO, IUserSignupDTO } from 'interfaces';
 
 const route = express.Router();
 
@@ -21,7 +20,9 @@ export const users = (app: express.Router) => {
       const userId = req.session.userId;
 
       if (!userId) {
-        throw new UnauthorizedError('User not logged in');
+        return res.json({
+          user: null,
+        });
       }
 
       const user = await userService.getById(
@@ -70,6 +71,7 @@ export const users = (app: express.Router) => {
         throw new InternalServerError('User could not be created');
       }
 
+      req.session.userId = user._id.toString();
       return res.json({ user });
     } catch (err) {
       next(err);
@@ -97,7 +99,9 @@ export const users = (app: express.Router) => {
   route.post('/logout', async (req, res, next) => {
     try {
       req.session.destroy(() => {
-        res.redirect('/');
+        return res.json({
+          success: true,
+        });
       });
     } catch (err) {
       next(err);

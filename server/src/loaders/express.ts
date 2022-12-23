@@ -2,7 +2,7 @@ import express from 'express';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
 import MongoStore from 'connect-mongo';
-import config from '@config';
+import config from 'config';
 import controllers from '../api';
 import { errorResponder } from 'api/middlewares';
 
