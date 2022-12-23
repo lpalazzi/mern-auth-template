@@ -1,3 +1,4 @@
+import config from '@config';
 import express from 'express';
 
 export const errorResponder: express.ErrorRequestHandler = async (
@@ -8,10 +9,10 @@ export const errorResponder: express.ErrorRequestHandler = async (
 ) => {
   try {
     res.header('Content-Type', 'application/json');
-    res.status(err.statusCode || 500).json({
+    res.status(err.statusCode || 500).send({
       message: err.message || 'Internal server error',
       statusCode: err.statusCode || 500,
-      stack: err.stack,
+      stack: config.test ? err.stack : null,
     });
   } catch (err) {
     next(err);

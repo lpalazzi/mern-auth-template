@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import MongoStore from 'connect-mongo';
 import config from '@config';
 import controllers from '../api';
+import { errorResponder } from 'api/middlewares';
 
 declare module 'express-session' {
   interface SessionData {
@@ -36,9 +37,6 @@ export default async (app: express.Express) => {
     })
   );
 
-  app.get('/status', (req, res) => {
-    res.status(200).end();
-  });
-
-  app.use('/api', controllers);
+  app.use(controllers);
+  app.use(errorResponder);
 };
