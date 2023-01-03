@@ -9,9 +9,8 @@ import {
 } from 'api/errors';
 import { IUserLoginDTO, IUserSignupDTO } from 'interfaces';
 
-const route = express.Router();
-
 export const users = (app: express.Router) => {
+  const route = express.Router();
   app.use('/user', route);
   const userService = container.resolve(UserService);
 
@@ -33,25 +32,6 @@ export const users = (app: express.Router) => {
         throw new ModelNotFoundError('User not found');
       }
 
-      return res.json({
-        user,
-      });
-    } catch (err) {
-      next(err);
-    }
-  });
-
-  route.get('/:id', async (req, res, next) => {
-    try {
-      const id = req.params.id;
-      if (!mongoose.isValidObjectId(id)) {
-        throw new BadRequestError(`${id} is not a valid ObjectId`);
-      }
-
-      const user = await userService.getById(new mongoose.Types.ObjectId(id));
-      if (!user) {
-        throw new ModelNotFoundError('User not found');
-      }
       return res.json({
         user,
       });

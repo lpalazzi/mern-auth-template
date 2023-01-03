@@ -9,6 +9,7 @@ const UserSchema = new mongoose.Schema<IUser>({
   passwordHash: {
     type: String,
     required: true,
+    select: false,
   },
   name: {
     first: String,

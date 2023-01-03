@@ -1,8 +1,8 @@
 import express from 'express';
-import { users } from './controllers';
+import * as controllers from './controllers';
 
 const app = express.Router();
 
-users(app);
+controllers.users(app);
 
 export default app;

@@ -30,11 +30,10 @@ export class UserService {
 
     const { password, ...userToCreate } = userDTO;
     const passwordHash = await argon2.hash(password);
-    const createdUser = await this.userDao.create({
+    const user = await this.userDao.create({
       ...userToCreate,
       passwordHash,
     });
-    const user = await this.getById(createdUser._id);
 
     return {
       user,
