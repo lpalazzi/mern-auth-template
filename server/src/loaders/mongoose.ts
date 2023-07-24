@@ -9,5 +9,12 @@ export default async () => {
     'error',
     console.error.bind(console, 'MongoDB connection error:')
   );
-  await mongoose.connect(config.mongoUrl);
+  try {
+    await mongoose.connect(config.mongoUrl, {
+      serverSelectionTimeoutMS: 5000,
+    });
+  } catch (error: any) {
+    console.log('[database]\t ERROR: Could not connect to MongoDB');
+    process.exit();
+  }
 };

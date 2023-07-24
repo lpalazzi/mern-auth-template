@@ -1,16 +1,17 @@
 import mongoose from 'mongoose';
+import { Name, UserRole } from 'types';
 
 export interface IUser {
   _id: mongoose.Types.ObjectId;
   email: string;
   passwordHash: string;
-  name: {
-    first: string;
-    last: string;
-  };
+  name: Name;
+  role?: UserRole;
 }
 
-export interface IUserSignupDTO extends Omit<IUser, '_id' | 'passwordHash'> {
+export interface IUserSignupDTO {
+  email: string;
+  name: Name;
   password: string;
 }
 

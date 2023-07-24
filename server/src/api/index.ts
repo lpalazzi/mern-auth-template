@@ -3,6 +3,6 @@ import * as controllers from './controllers';
 
 const app = express.Router();
 
-controllers.users(app);
+controllers.user(app);
 
 export default app;

@@ -12,7 +12,7 @@ export const errorResponder: express.ErrorRequestHandler = async (
     res.status(err.statusCode || 500).send({
       message: err.message || 'Internal server error',
       statusCode: err.statusCode || 500,
-      stack: config.test ? err.stack : null,
+      stack: config.dev ? err.stack : null,
     });
   } catch (err) {
     next(err);
