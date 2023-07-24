@@ -9,7 +9,7 @@ Starter code for projects that require user authentication (email+password)
 Create a `.env` file at the root of the project with the following content:
 
 ```
-TEST=1
+DEV=1
 PORT=8000
 MONGODB_URL=mongodb://127.0.0.1/auth
 SESSION_SECRET=your_secret
@@ -24,4 +24,3 @@ Build and run the app by running `yarn build` followed by `yarn start`. This sta
 ### Run in development mode
 
 To run the app in development mode run `yarn dev-client` and `yarn dev-server` in two separate terminals. Alternatively, you can simply run `yarn dev` which runs both client and server commands concurrently in the same terminal. This will rebuild and restart the server when changes are made. You will have to refresh the browser to see client changes.
-
