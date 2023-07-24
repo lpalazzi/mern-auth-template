@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Button, Group, Stack, TextInput } from '@mantine/core';
+import { Anchor, Button, Group, Stack, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { closeAllModals } from '@mantine/modals';
+import { closeAllModals, openModal } from '@mantine/modals';
 import { ModalSettings } from '@mantine/modals/lib/context';
 import { showNotification } from '@mantine/notifications';
 
@@ -38,8 +38,9 @@ const LoginForm: React.FC = () => {
       closeAllModals();
     } catch (error: any) {
       showNotification({
-        title: 'Login error',
-        message: error.message || 'Unknown error',
+        title: 'Error signing in user',
+        message: error.message || 'Undefined error',
+        color: 'red',
       });
     }
   };
@@ -51,6 +52,7 @@ const LoginForm: React.FC = () => {
           withAsterisk
           label='Email'
           placeholder='your@email.com'
+          autoComplete='email'
           {...form.getInputProps('email')}
         />
         <TextInput
@@ -58,17 +60,18 @@ const LoginForm: React.FC = () => {
           label='Password'
           placeholder='********'
           type='password'
+          autoComplete='current-password'
           {...form.getInputProps('password')}
         />
       </Stack>
       <Group position='right' mt='md'>
-        <Button type='submit'>Log in</Button>
+        <Button type='submit'>Submit</Button>
       </Group>
     </form>
   );
 };
 
 export const LoginModal: ModalSettings = {
-  title: 'Log in',
+  title: 'Sign in',
   children: <LoginForm />,
 };

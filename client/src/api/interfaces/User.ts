@@ -1,15 +1,15 @@
-import { ID } from 'types';
+import { ID, Name, UserRole } from 'types';
 
 export interface IUserReturnDTO {
   _id: ID;
   email: string;
-  name: {
-    first: string;
-    last: string;
-  };
+  name: Name;
+  role?: UserRole;
 }
 
-export interface IUserSignupDTO extends Omit<IUserReturnDTO, '_id'> {
+export interface IUserSignupDTO {
+  email: string;
+  name: Name;
   password: string;
 }
 

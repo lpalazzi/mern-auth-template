@@ -10,16 +10,22 @@ import { makeRequest } from './reqHelpers';
 export class UserApi {
   private static baseUrl = '/user';
 
+  static async getAll() {
+    const response = await makeRequest(`${this.baseUrl}/getAll`);
+    const usersReturn: IUserReturnDTO[] = response.users;
+    return usersReturn.map((userReturn) => new User(userReturn));
+  }
+
+  static async getById(userId: ID) {
+    const response = await makeRequest(`${this.baseUrl}/getById/${userId}`);
+    const userReturn: IUserReturnDTO = response.user;
+    return new User(userReturn);
+  }
+
   static async getActiveUser() {
     const response = await makeRequest(`${this.baseUrl}/getActiveUser`);
     const userReturn: IUserReturnDTO = response.user;
     return userReturn ? new User(userReturn) : null;
-  }
-
-  static async getById(id: ID) {
-    const response = await makeRequest(`${this.baseUrl}/${id}`);
-    const userReturn: IUserReturnDTO = response.user;
-    return new User(userReturn);
   }
 
   static async signup(userSignup: IUserSignupDTO) {

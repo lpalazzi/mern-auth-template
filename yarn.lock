@@ -490,6 +490,19 @@
   resolved "https://registry.yarnpkg.com/@sideway/pinpoint/-/pinpoint-2.0.0.tgz#cff8ffadc372ad29fd3f78277aeb29e632cc70df"
   integrity sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==
 
+"@tabler/icons-react@^2.28.0":
+  version "2.28.0"
+  resolved "https://registry.yarnpkg.com/@tabler/icons-react/-/icons-react-2.28.0.tgz#ff0f8b639c88857039663a51574a5e7fbc172697"
+  integrity sha512-AuUd2hdK/4pa/DIIqCHZ32Dh9bIbbzo/2zEm2jr6cPARh81hJHScf/901ABYLNljWULCLSyz7YDOjnh+G1RGUw==
+  dependencies:
+    "@tabler/icons" "2.28.0"
+    prop-types "^15.7.2"
+
+"@tabler/icons@2.28.0":
+  version "2.28.0"
+  resolved "https://registry.yarnpkg.com/@tabler/icons/-/icons-2.28.0.tgz#0ab357c434e31b25d7aef868fa08143711f2e7e5"
+  integrity sha512-JgqeXzS2Cik0Bed+dn3AYh/N2OqLv7FzoOqIzAWnywJyVOBNxB47pzW4Zc0hidDVCk2dt1ekeC2jHaXSheT+BQ==
+
 "@types/body-parser@*":
   version "1.19.2"
   resolved "https://registry.yarnpkg.com/@types/body-parser/-/body-parser-1.19.2.tgz#aea2059e28b7658639081347ac4fab3de166e6f0"
@@ -1884,7 +1897,7 @@ plimit-lit@^1.2.6:
   dependencies:
     queue-lit "^1.5.0"
 
-prop-types@^15.6.2:
+prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
